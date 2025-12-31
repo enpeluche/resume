@@ -48,6 +48,7 @@
 \RequirePackage{ifxetex,ifluatex}
 \RequirePackage{scrlfile}
 \RequirePackage{xparse}
+\RequirePackage{hyperref}
 
 %% v1.1.5: added for convenience
 \newif\ifxetexorluatex
@@ -201,15 +202,13 @@
 }
 \ExplSyntaxOff
 
-\newcommand{\name}[1]{\def\@name{#1}}
+\newcommand{\name}[1]{\def\@name{\Large #1}}
 \newcommand{\tagline}[1]{\def\@tagline{#1}}
 \newcommand{\personalinfo}[1]{\def\@personalinfo{#1}}
 \NewInfoField{email}{\faAt}[mailto:]
 \NewInfoField{mailaddress}{\faEnvelope}
 \NewInfoField{phone}{\faPhone}[tel:]
 \NewInfoField{homepage}{\faGlobe}[https://]
-\NewInfoField{twitter}{\faTwitter}[https://twitter.com/]
-% v1.7.2 twitter.com is now X.com
 \NewInfoField{xtwitter}{\raisebox{-0.2ex}{\scalebox{0.95}{\simpleicon{x}}}\,}[https://x.com/]
 \NewInfoField{linkedin}{\faLinkedin}[https://linkedin.com/in/]
 \NewInfoField{github}{\faGithub}[https://github.com/]
@@ -264,6 +263,7 @@
 \newcommand{\cvsectionfont}{\LARGE\bfseries}
 \newcommand{\cvsubsectionfont}{\large\bfseries}
 
+% L
 \newcommand{\makecvheaderleft}{%
   \begingroup
     \altacv@left@photos\hfill%
@@ -291,7 +291,7 @@
   \endgroup\medskip
 }
     
-\renewenvironment{quote}{\color{accent}\itshape\large}{\par}
+\renewenvironment{quote}{\color{accent}\itshape\normalsize}{\par}
 
 \newcommand{\cvsection}[2][]{%
   \nointerlineskip\bigskip%  %% bugfix in v1.6.2
@@ -312,15 +312,15 @@
   \noindent
   \begin{tabular*}{\linewidth}
   {
-    @{}p{0.22\linewidth}
-    @{}p{0.8\linewidth}
+    @{}p{0.13\linewidth}
+    @{}p{0.88\linewidth}
   }
     % Ligne 1 : Date + Titre
-    \textcolor{body}{\small \cvDateMarker~#3} & 
+    \textcolor{body}{\footnotesize \cvDateMarker~#3} & 
     {\large\textcolor{emphasis}{\MakeUppercase{\textbf{#1}}}} \\
     
     % Ligne 2 : Vide + Lieu
-    & \textcolor{accent}{\small \cvLocationMarker~#2} \\
+    & \textcolor{accent}{\footnotesize \cvLocationMarker~#2} \\
     
     % Ligne 3 : Vide + Contenu libre (ex. : description)
     & {\small #4} \\
@@ -329,27 +329,36 @@
 
 
 
-
-
-
-\newcommand{\cvevent}[4]{%
-  {\large\color{emphasis}#1\par}
-  \smallskip\normalsize
-  \ifstrequal{#2}{}{}{
-  {#2}\par
-  \smallskip}
-  \ifstrequal{#3}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
-      ~#3}%
-    }}%
-  \ifstrequal{#4}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
-        ~#4}%
-    }}\par
-  \medskip\normalsize
+\newcommand{\experiences}[4]{%
+  \noindent
+  \begin{tabular*}{\linewidth}
+  {
+    @{}p{0.13\linewidth}
+    @{}p{0.88\linewidth}
+  }
+    % Ligne 1 : Date + Titre
+    \textcolor{body}{\footnotesize \cvDateMarker~#3} & 
+    {\large\textcolor{emphasis}{\MakeUppercase{\textbf{#1}}}} \\
+    
+    % Ligne 2 : Vide + Lieu
+    & \textcolor{accent}{\footnotesize \cvLocationMarker~#2} \\
+  \end{tabular*}
+  {\small #4} 
 }
+
+
+\newcommand{\project}[4]{%
+    {\large\color{emphasis}\textbf{#1}\par} % le titre
+    \smallskip\normalsize
+    \ifstrequal{#2}{}{}{{\small #2}\par\smallskip} % la description
+    \ifstrequal{#3}{}{}{\small \faGithub { \small \color{accent}\href{#3}{#3}}\par\smallskip} % le lien github 
+    \par
+    \medskip\normalsize
+}
+
+
+
+
 
 % v1.7: adds accsupp for the icon as well
 \newcommand{\cvachievement}[3]{%
@@ -361,7 +370,7 @@
 }
 
 \newcommand{\cvtag}[1]{%
-  \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex]{#1};
+  \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex]{\small #1};
 }
 
 % v1.6: Use accsupp so that the actual numeric value is copied/pasted
@@ -456,35 +465,6 @@
   \input{#2}}%
 }
 \newcommand{\addnextpagesidebar}[2][]{\afterpage{\addsidebar[#1]{#2}}}
-
-% v1.6.5 But provide for ability to highlight names in publication list
-\RequirePackage{pgffor}
-\def\my@namelist{}
-\newcommand{\mynames}[1]{\def\my@namelist{#1}}
-\newtoggle{boldname}
-\AddToHook{package/biblatex/after}{
-\renewcommand*{\mkbibnamefamily}[1]{%
-  \global\togglefalse{boldname}%
-  \foreach \my@fname / \my@gname in \my@namelist {%
-    \ifboolexpr{ test {\ifdefstrequal{\namepartfamily}{\my@fname}}
-                 and
-                 test {\ifdefstrequal{\namepartgiven}{\my@gname}}}
-      {\global\toggletrue{boldname}}{}%
-  }%
-  \iftoggle{boldname}{\textbf{#1}}{#1}%
-}
-
-\renewcommand*{\mkbibnamegiven}[1]{%
-  \global\togglefalse{boldname}%
-  \foreach \my@fname / \my@gname in \my@namelist{%
-    \ifboolexpr{ test {\ifdefstrequal{\namepartfamily}{\my@fname}}
-                 and
-                 test {\ifdefstrequal{\namepartgiven}{\my@gname}}}
-      {\global\toggletrue{boldname}\breakforeach}{}%
-  }%
-  \iftoggle{boldname}{\textbf{#1}}{#1}%
-}
-}
 
 \AddToHook{begindocument/before}{%
   \pagestyle{empty}

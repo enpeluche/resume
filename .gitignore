@@ -1,0 +1,10 @@
+*.xmpi
+*.fdb_latexmk
+*.aux
+*.out
+*.log
+*.fls
+*.gz
+*.png
+*.jpg
+*.jpeg

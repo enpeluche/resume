@@ -1,0 +1,260 @@
+
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+%% AltaCV uses the fontawesome5 and simpleicons packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/simpleicons for full list of symbols.
+
+% Change the page layout if you need to
+%\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+\geometry{left=1cm,right=1cm,top=1cm,bottom=1cm,columnsep=1cm}
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+\usepackage{ragged2e}
+
+% xelatex -shell-escape -output-driver="xdvipdfmx -z 0" sample.tex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Change the colours if you want to
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{DarkPastelRed}{HTML}{450808}
+\definecolor{PastelRed}{HTML}{8F0D0D}
+\definecolor{GoldenEarth}{HTML}{E7D192}
+\colorlet{name}{black}
+\colorlet{tagline}{PastelRed}
+\colorlet{heading}{DarkPastelRed}
+\colorlet{headingrule}{GoldenEarth}
+\colorlet{subheading}{PastelRed}
+\colorlet{accent}{PastelRed}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+% Ajoute ça avant \begin{document}
+\newcommand{\kw}[1]{\textbf{\color{name}#1}}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+% ...and the markers for the date/location for \cvevent
+% \renewcommand{\cvDateMarker}{\faCalendar*[regular]}
+% \renewcommand{\cvLocationMarker}{\faMapMarker*}
+
+\begin{document}
+\name{Lucas Noirot (Petit)}
+
+\tagline{Ingénieur R\&D en Algorithmique \& Mathématiques Appliquées}
+%% You can add multiple photos on the left or right
+%\photoR{4cm}{img_7056}
+%\photoL{2.8cm}{hovercode}
+
+\personalinfo{%
+  \email{lucas.noirot-petit@proton.me}
+  \phone{(+33) 685263667}
+  \location{Montpellier, France}
+  \homepage{enpeluche.github.io}
+  \linkedin{enpeluche}
+  \github{enpeluche}
+  %% You can add your own arbitrary detail with
+  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
+  % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
+
+  %% Or you can declare your own field with
+  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
+  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+  % \gitlab{your_id}
+  %%
+  %% For services and platforms like Mastodon where there isn't a
+  %% straightforward relation between the user ID/nickname and the hyperlink,
+  %% you can use \printinfo directly e.g.
+  % \printinfo{\faMastodon}{@username@instace}[https://instance.url/@username]
+  %% But if you absolutely want to create new dedicated info fields for
+  %% such platforms, then use \NewInfoField* with a star:
+  % \NewInfoField*{mastodon}{\faMastodon}
+  %% then you can use \mastodon, with TWO arguments where the 2nd argument is
+  %% the full hyperlink.
+}
+
+
+\columnratio{0.35}
+
+\begin{paracol}{2}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \makecvheaderright
+
+  \cvsection{À propos de moi}
+
+  \begin{quote}
+    Passionné par l'informatique et les mathématiques, je trouve mon équilibre dans l'abstraction, où
+    les idées prennent forme et deviennent concrètes.
+  \end{quote}
+
+
+  \cvsection{Compétences}
+
+  \cvsubsection{Sûreté \& Cryptographie}
+  \cvtag{Méthodes formelles (Coq)}
+  \cvtag{Preuve de sécurité}
+
+  \vspace{0.4em}
+
+  \cvsubsection{Optimisation \& Modélisation}
+  \cvtag{PLNE (MIP)}
+  \cvtag{Programmation par contraintes}
+  \cvtag{Heuristiques}
+  \cvtag{Analyse de complexité}
+
+  \vspace{0.4em}
+
+  \cvsubsection{Développement}
+  \cvtag{C/C++} \hfill
+  \cvtag{Rust} \hfill
+  \cvtag{OCaml} \hfill
+  \cvtag{Python} \\
+  \cvtag{SageMath} \hfill
+  \cvtag{Java} \hfill
+  \cvtag{HTML/JS}
+
+  \vspace{0.4em}
+
+  \cvsubsection{Outils \& Environnement}
+  \cvtag{Linux} \hfill
+  \cvtag{Git / GitHub} \hfill
+  \cvtag{Docker} \\
+  \cvtag{\LaTeX} \hfill
+  \cvtag{Visualisation}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \cvsection{Langues}
+
+  \begin{itemize}[label=\textcolor{accent}{\tiny\faCircle}]
+    \item \textbf{Français} (Natif)
+    \item \textbf{Anglais} (C1 -- Technique)
+  \end{itemize}
+
+  \cvsection{Autre}
+
+  \cvsubsection{Qualités personnelles}
+  \cvtag{Rigoureux} \hfill
+  \cvtag{Abstraction} \hfill
+  \cvtag{Autodidacte}\\
+
+  \cvtag{Pro-actif} \hfill
+  \cvtag{Esprit d'équipe} \hfill
+  \cvtag{Créatif}
+
+  \vspace{0.4em}
+
+  \cvsubsection{Centres d'intérêt}
+  \cvtag{Origami}
+  \cvtag{Jeux de société}
+  \cvtag{Astronomie}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  \switchcolumn
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \makecvheaderleft
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cvsection{Formations}
+
+  \cveventt{Master en Informatique - Algorithmique}
+  {Université de Montpellier}
+  {\smash{\parbox[t]{3em}{\centering
+        2025
+        \\[3pt]
+        \vrule height 27pt width 0.5pt}}}
+  {Complexité -- Cryptographie -- Calcul formel -- Optimisation}
+
+  \cveventt{Master 1 en Mathématiques}
+  {Université de Bourgogne}
+  {\smash{\parbox[t]{3em}{\centering
+        2023
+        \\[3pt]
+        \vrule height 27pt width 0.5pt}}}
+  {Algèbre linéaire -- Théorie des corps -- Probabilités }
+
+  \cveventt{Licence en Mathématiques}
+  {Université de Bourgogne}
+  {\smash{\parbox[t]{3em}{\centering
+        2022
+        \\[3pt]
+        \vrule height 11pt width 0.5pt \\[-1pt] 2019}}}
+  {Classé 5\textsuperscript{e} sur 55}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cvsection{Expérience}
+
+  \experiences{Stage de Recherche en Cryptographie}
+  {Laboratoire du LIRMM -- Équipe ECO}{
+  \smash{\parbox[t]{3em}{\centering
+  2025
+  \\[3pt]
+  {\scriptsize\itshape (5 mois)}}}}
+  {\vspace{0.05cm}
+
+  Réduction de réseaux : Adaptations d’idées provenant du cas polynomial.
+
+  Développement d'algorithmes de réduction sous \kw{SageMath}. Analyse de complexité et comparaison des performances entre arithmétique polynomiale et entière.
+
+  {\small \faGithub \color{accent}  \href{https://enpeluche.github.io/lattice-reduction-internship/}{enpeluche.github.io/lattice-reduction-internship/}}
+  }
+
+  \vspace{0.4cm}
+
+  \experiences{Professeur particulier}
+  {Dijon, freelance}
+  {2022}
+  {Mathématiques et physique niveau collège et lycée}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cvsection{Projets personnels}
+
+  \project{Optimisation de Tournées \& Planification (WSRP)}
+  {Conception d'un solveur hybride pour le routage de techniciens sous contraintes de compétences. Implémentation d'une \kw{heuristique} en \kw{Java} couplée à une programmation par contraintes (\kw{OR-Tools}).}
+  {enpeluche/wsrp-lns-solver}
+
+  \project{Coq-Verified Red-Black Tree}
+  {Formalisation et preuve mathématique des invariants d'équilibrage dans \kw{Coq}, avec extraction automatique vers un module \kw{OCaml} performant et certifié sans bug.}
+  {enpeluche/coq-verified-rbt}
+
+  \project{Architecture de Moteur de Résolution de Contraintes (CSP)}
+  {Développement \textit{from scratch} en \kw{C++} d'un moteur de propagation. Implémentation des algorithmes d'Arc-Consistance (\kw{AC-3}).}
+  {enpeluche/constraint-puzzle-solver}
+
+  \project{Protocole Cryptographique ZKP (Zero-Knowledge Proof)}
+  {Implémentation du protocole d'authentification de \kw{Schnorr sur courbes elliptiques}. Prototypage algébrique sous \kw{SageMath} et développement d'une version performante en \kw{C++}.}
+  {enpeluche/zkp-schnorr-cpp}
+
+  \project{Messagerie Post-Quantique (Réseaux Euclidiens)}
+  {Implémentation d'un chat chiffré résistant aux ordinateurs quantiques. Développement \kw{C++} d'un protocole d'échange de clés basé sur le problème \kw{LWE (Learning With Errors)} et les réseaux euclidiens. Architecture Client/Serveur asynchrone.}
+  {https://github.com/enpeluche/}
+
+\end{paracol}
+
+\end{document}
