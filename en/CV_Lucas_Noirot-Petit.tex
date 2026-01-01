@@ -1,0 +1,273 @@
+% !TEX program = lualatex
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{cv}
+
+\geometry{left=1cm,right=1cm,top=1cm,bottom=1cm,columnsep=1cm}
+
+\usepackage{paracol}
+
+\usepackage{ragged2e}
+
+% xelatex -shell-escape -output-driver="xdvipdfmx -z 0" sample.tex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Change the colours if you want to
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{DarkPastelRed}{HTML}{450808}
+\definecolor{PastelRed}{HTML}{8F0D0D}
+\definecolor{GoldenEarth}{HTML}{E7D192}
+\colorlet{name}{black}
+\colorlet{tagline}{PastelRed}
+\colorlet{heading}{DarkPastelRed}
+\colorlet{headingrule}{GoldenEarth}
+\colorlet{subheading}{PastelRed}
+\colorlet{accent}{PastelRed}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+% Ajoute ça avant \begin{document}
+\newcommand{\kw}[1]{\textbf{\color{name}#1}}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+% ...and the markers for the date/location for \cvevent
+% \renewcommand{\cvDateMarker}{\faCalendar*[regular]}
+% \renewcommand{\cvLocationMarker}{\faMapMarker*}
+
+\begin{document}
+\name{Lucas Noirot \\[-10pt] (Petit)}
+
+\tagline{R\&D Engineer - Algorithms \& Applied Mathematics}
+%% You can add multiple photos on the left or right
+\photoR{4cm}{../images/P1034037.png}
+%\photoL{2.8cm}{hovercode}
+
+\personalinfo{%
+  \phone{(+33) 6 85 26 36 67}~\hspace{-10pt}\email{lucas.noirot-petit@proton.me}
+
+  \vspace{0.25cm}
+
+  \linkedin{enpeluche}~\hspace{-10pt}\github{enpeluche}~\hspace{-10pt}\homepage{enpeluche.github.io}
+
+  \vspace{0.25cm}
+
+  \location{Montpellier, France} \hfill
+  \permis{Permis B}
+}
+
+
+
+\columnratio{0.38}
+
+\begin{paracol}{2}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \makecvheaderright
+
+  \cvsection{Profile}
+
+  \vfill
+
+  \begin{quote}
+    Passionate about Computer Science and
+
+    Mathematics, I specialize in bridging the gap between abstract concepts and concrete, practical solutions.
+  \end{quote}
+
+  \vfill
+
+  \cvsubsection{Personal Attributes}
+  \cvtag{Rigorous} \hfill
+  \cvtag{Abstract Thinking} \hfill
+  \cvtag{Self-learner} \\
+
+  \cvtag{Proactive} \hfill
+  \cvtag{Team Player} \hfill
+  \cvtag{Creative}
+
+  \vfill
+
+  \cvsubsection{Interests}
+  \cvtag{Origami}
+  \cvtag{Board Games}
+  \cvtag{Astronomy}
+
+  \vfill
+
+  \cvsection{Technical Skills}
+
+  \vfill
+
+  \cvsubsection{Formal Methods \& Cryptography}
+  \cvtag{Formal Methods (Coq)}
+  \cvtag{Security Proofs}
+
+  \vfill
+
+  \cvsubsection{Optimization \& Modeling}
+  \cvtag{Mixed-Integer Programming (MIP)}
+  \cvtag{Constraint Programming}
+  \cvtag{Heuristics}
+  \cvtag{Complexity Analysis}
+
+  \vfill
+
+  \cvsubsection{Development}
+  \cvtag{C/C++} \hfill
+  \cvtag{Rust} \hfill
+  \cvtag{OCaml} \hfill
+  \cvtag{Python} \\
+  \cvtag{SageMath}
+  \cvtag{Java}
+  \cvtag{HTML/CSS/JavaScript}
+
+  \vfill
+
+  \cvsubsection{Tools \& Environment}
+  \cvtag{Linux} \hfill
+  \cvtag{Git} \hfill
+  \cvtag{Docker} \hfill
+  \cvtag{\LaTeX}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \vfill
+
+  \cvsection{Languages}
+
+  \begin{itemize}[label=\textcolor{accent}{\tiny\faCircle}]
+    \item \textbf{French} (Native)
+    \item \textbf{English} (C1 -- Full Professional Proficiency)
+  \end{itemize}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  \switchcolumn
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \makecvheaderleft
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \vspace{-0.3cm}
+  \cvsection{Education}
+
+  \vfill
+
+  \cveventt{M.Sc. in Computer Science -- Algorithms}
+  {University of Montpellier, France}
+  {\smash{\parbox[t]{3em}{\centering
+        2025
+        \\[3pt]
+        \vrule height 36pt width 0.5pt}}}
+  {Cryptography -- Computer Algebra -- Optimization}
+
+  \vfill
+
+  \cveventt{M.Sc. in Mathematics (1st year)}
+  {University of Burgundy, France}
+  {\smash{\parbox[t]{3em}{\centering
+        2023
+        \\[3pt]
+        \vrule height 36pt width 0.5pt}}}
+  {Linear Algebra -- Field Theory -- Probability Theory}
+
+  \vfill
+
+  \cveventt{B.Sc. in Mathematics}
+  {University of Burgundy, France}
+  {\smash{\parbox[t]{3em}{\centering
+        2022
+        \\[3pt]
+        \vrule height 11pt width 0.5pt \\[-1pt] 2019}}}
+  {Ranked 5th out of 55 (Top 10\%)}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \vfill
+
+  \cvsection{Experience}
+
+  \vfill
+
+  \experiences{Research Internship in Cryptography}
+  {LIRMM Laboratory -- ECO Team}{
+  \smash{\parbox[t]{3em}{\centering
+  2025
+  \\[3pt]
+  {\scriptsize\itshape (5~months)}}}}
+  {\vspace{0.05cm}
+
+  \textbf{Topic: Lattice Reduction} -- Adapting strategies from the polynomial case.
+
+  Developed reduction algorithms using \kw{SageMath}. Conducted complexity analysis and benchmarked performance between polynomial and integer arithmetic.
+
+    {\small \faGithub \color{accent}  \href{https://enpeluche.github.io/lattice-reduction-internship/}{enpeluche.github.io/lattice-reduction-internship/}}
+  }
+
+  \vfill
+  %t'est' unit'aire t'yèpre script'
+  \experiences{Private Tutor}
+  {Dijon, France -- Freelance}
+  {2022}
+  {Provided Mathematics and Physics tutoring to middle and high school students.}
+
+  \vfill
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cvsection{Personal Projects}
+
+  \vfill
+
+  \project{Workforce Scheduling \& Routing (WSRP)}
+  {Designed a hybrid solver for technician routing under skill constraints. Implemented a \kw{heuristic} in \kw{Java} coupled with Constraint Programming (\kw{OR-Tools}).}
+  {enpeluche/wsrp-lns-solver}
+
+  \vfill
+
+  \project{Coq-Verified Red-Black Tree}
+  {Formalized and proved balancing invariants in \kw{Coq}, with automatic extraction to an efficient, certified \kw{OCaml} module.}
+  {enpeluche/coq-verified-rbt}
+
+  \vfill
+
+  \project{Constraint Solving Engine Architecture (CSP)}
+  {Developed a propagation engine from scratch in \kw{C++}. Implemented Arc-Consistency algorithms (\kw{AC-3}).}
+  {enpeluche/constraint-puzzle-solver}
+
+  \vfill
+
+  \project{Zero-Knowledge Proof (ZKP) Protocol}
+  {Implemented the \kw{Schnorr authentication protocol} over Elliptic Curves. Prototyped algebraically in \kw{SageMath} and developed a high-performance version in \kw{C++}.}
+  {enpeluche/zkp-schnorr-cpp}
+
+  \newpage
+
+  \project{Post-Quantum Messaging (Lattice-based)}
+  {Implemented a quantum-resistant encrypted chat application. Developed a \kw{C++} key exchange protocol based on the \kw{LWE (Learning With Errors)} problem over lattices. Built an asynchronous Client/Server architecture.}
+  {https://github.com/enpeluche/}
+
+\end{paracol}
+
+\end{document}

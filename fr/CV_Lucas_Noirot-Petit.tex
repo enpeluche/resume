@@ -1,16 +1,67 @@
+% !TEX program = lualatex
 
-%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
-% \documentclass[10pt,a4paper,normalphoto]{altacv}
+\documentclass[10pt,a4paper,ragged2e,withhyper]{cv}
 
-\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
-%% AltaCV uses the fontawesome5 and simpleicons packages.
-%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/simpleicons for full list of symbols.
-
-% Change the page layout if you need to
-%\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
 \geometry{left=1cm,right=1cm,top=1cm,bottom=1cm,columnsep=1cm}
-% The paracol package lets you typeset columns of text in parallel
+
 \usepackage{paracol}
+
+\usepackage[none]{hyphenat}
+
+\usepackage{accsupp} % Paquet pour gérer le copier-coller
+
+% Patch pour le téléphone
+\renewcommand*{\phonesymbol}{%
+    \BeginAccSupp{method=escape,ActualText={Tel: }}%
+    \faPhone% ou le symbole par défaut de ton thème
+    \EndAccSupp{}~%
+}
+
+% Patch pour l'email
+\renewcommand*{\emailsymbol}{%
+    \BeginAccSupp{method=escape,ActualText={Email: }}%
+    \faEnvelope%
+    \EndAccSupp{}~%
+}
+
+% Patch pour LinkedIn (si tu utilises une commande custom)
+\renewcommand*{\linkedinsymbol}{%
+    \BeginAccSupp{method=escape,ActualText={LinkedIn: }}%
+    \faLinkedin%
+    \EndAccSupp{}~%
+}
+
+% Patch pour GitHub
+\renewcommand*{\githubsymbol}{%
+    \BeginAccSupp{method=escape,ActualText={GitHub: }}%
+    \faGithub%
+    \EndAccSupp{}~%
+}
+
+
+% Patch pour le site web
+\renewcommand*{\homepagesymbol}{%
+    \BeginAccSupp{method=escape,ActualText={Site Web: }}%
+    \faGlobe% (Vérifie que c'est bien l'icône que tu veux)
+    \EndAccSupp{}~%
+}
+
+% Patch pour la localisation/adresse
+\renewcommand*{\locationsymbol}{%
+    \BeginAccSupp{method=escape,ActualText={Lieu: }}%
+    \faMapMarker%
+    \EndAccSupp{}~%
+}
+
+% Patch pour le permis
+% Note : Si tu as défini \permissymbol toi-même, assure-toi d'utiliser
+% \renewcommand. Si c'est une nouvelle commande, utilise \newcommand.
+\renewcommand*{\permissymbol}{%
+    \BeginAccSupp{method=escape,ActualText={Divers: }}%
+    \faCar%
+    \EndAccSupp{}~%
+}
+
 
 \usepackage{ragged2e}
 
@@ -61,42 +112,28 @@
 % \renewcommand{\cvLocationMarker}{\faMapMarker*}
 
 \begin{document}
-\name{Lucas Noirot (Petit)}
+\name{Lucas Noirot \\[-10pt] (Petit)}
 
 \tagline{Ingénieur R\&D en Algorithmique \& Mathématiques Appliquées}
 %% You can add multiple photos on the left or right
-%\photoR{4cm}{img_7056}
+\photoR{4cm}{../images/P1034037.png}
 %\photoL{2.8cm}{hovercode}
 
 \personalinfo{%
-  \email{lucas.noirot-petit@proton.me}
-  \phone{(+33) 685263667}
-  \location{Montpellier, France}
-  \homepage{enpeluche.github.io}
-  \linkedin{enpeluche}
-  \github{enpeluche}
-  %% You can add your own arbitrary detail with
-  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
-  % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
+  \phone{(+33) 6 85 26 36 67}~\hspace{-10pt}\email{lucas.noirot-petit@proton.me}
 
-  %% Or you can declare your own field with
-  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
-  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
-  % \gitlab{your_id}
-  %%
-  %% For services and platforms like Mastodon where there isn't a
-  %% straightforward relation between the user ID/nickname and the hyperlink,
-  %% you can use \printinfo directly e.g.
-  % \printinfo{\faMastodon}{@username@instace}[https://instance.url/@username]
-  %% But if you absolutely want to create new dedicated info fields for
-  %% such platforms, then use \NewInfoField* with a star:
-  % \NewInfoField*{mastodon}{\faMastodon}
-  %% then you can use \mastodon, with TWO arguments where the 2nd argument is
-  %% the full hyperlink.
+  \vspace{0.25cm}
+
+  \linkedin{enpeluche}~\hspace{-10pt}\github{enpeluche}~\hspace{-10pt}\homepage{enpeluche.github.io}
+
+  \vspace{0.25cm}
+
+  \location{Montpellier, France} \hfill
+  \permis{Permis B}
 }
 
 
-\columnratio{0.35}
+\columnratio{0.38}
 
 \begin{paracol}{2}
 
@@ -105,55 +142,16 @@
 
   \cvsection{À propos de moi}
 
+  \vfill
+
   \begin{quote}
-    Passionné par l'informatique et les mathématiques, je trouve mon équilibre dans l'abstraction, où
+    Passionné par l'informatique et les
+
+    mathématiques, je trouve mon équilibre dans l'abstraction, où
     les idées prennent forme et deviennent concrètes.
   \end{quote}
 
-
-  \cvsection{Compétences}
-
-  \cvsubsection{Sûreté \& Cryptographie}
-  \cvtag{Méthodes formelles (Coq)}
-  \cvtag{Preuve de sécurité}
-
-  \vspace{0.4em}
-
-  \cvsubsection{Optimisation \& Modélisation}
-  \cvtag{PLNE (MIP)}
-  \cvtag{Programmation par contraintes}
-  \cvtag{Heuristiques}
-  \cvtag{Analyse de complexité}
-
-  \vspace{0.4em}
-
-  \cvsubsection{Développement}
-  \cvtag{C/C++} \hfill
-  \cvtag{Rust} \hfill
-  \cvtag{OCaml} \hfill
-  \cvtag{Python} \\
-  \cvtag{SageMath} \hfill
-  \cvtag{Java} \hfill
-  \cvtag{HTML/JS}
-
-  \vspace{0.4em}
-
-  \cvsubsection{Outils \& Environnement}
-  \cvtag{Linux} \hfill
-  \cvtag{Git / GitHub} \hfill
-  \cvtag{Docker} \\
-  \cvtag{\LaTeX} \hfill
-  \cvtag{Visualisation}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-  \cvsection{Langues}
-
-  \begin{itemize}[label=\textcolor{accent}{\tiny\faCircle}]
-    \item \textbf{Français} (Natif)
-    \item \textbf{Anglais} (C1 -- Technique)
-  \end{itemize}
-
-  \cvsection{Autre}
+  \vfill
 
   \cvsubsection{Qualités personnelles}
   \cvtag{Rigoureux} \hfill
@@ -164,16 +162,71 @@
   \cvtag{Esprit d'équipe} \hfill
   \cvtag{Créatif}
 
-  \vspace{0.4em}
+  \vfill
 
   \cvsubsection{Centres d'intérêt}
-  \cvtag{Origami}
-  \cvtag{Jeux de société}
+  \cvtag{Origami}\hfill
+  \cvtag{Jeux de société}\hfill
   \cvtag{Astronomie}
 
+  \vfill
+
+  \cvsection{Compétence}
+
+  \vfill
+
+  \cvsubsection{Sûreté \& Cryptographie}
+  \cvtag{Méthodes formelles (Coq)}
+  \cvtag{Preuve de sécurité}
+
+  \vfill
+
+  \cvsubsection{Optimisation \& Modélisation}
+  \cvtag{PLNE (MIP)}
+  \cvtag{Programmation par contraintes}
+  \cvtag{Heuristiques}\hfill
+  \cvtag{Analyse de complexité}
+
+  \vfill
+
+  \cvsubsection{Développement}
+  \cvtag{C/C++} \hfill
+  \cvtag{Rust} \hfill
+  \cvtag{OCaml} \hfill
+  \cvtag{Python} \\
+  \cvtag{SageMath}
+  \cvtag{Java}
+  \cvtag{HTML/CSS/JavaScript}
+
+  \vfill
+
+  \cvsubsection{Outils \& Environnement}
+  \cvtag{ Linux} \hfill
+  \cvtag{ Git} \hfill
+  \cvtag{ Docker} \hfill
+  \cvtag{\LaTeX}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \vfill
+
+  \cvsection{Langue}
+
+  \vfill
+
+  \begin{itemize}[label=\textcolor{accent}{\tiny\faCircle}]
+    \item \textbf{Français} (Natif)
+    \item \textbf{Anglais} (C1 -- Technique)
+  \end{itemize}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \switchcolumn
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -181,23 +234,31 @@
   \makecvheaderleft
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \cvsection{Formations}
+
+  \vspace{-0.3cm}
+  \cvsection{Formation}
+
+  \vfill
 
   \cveventt{Master en Informatique - Algorithmique}
   {Université de Montpellier}
   {\smash{\parbox[t]{3em}{\centering
         2025
         \\[3pt]
-        \vrule height 27pt width 0.5pt}}}
+        \vrule height 36pt width 0.5pt}}}
   {Complexité -- Cryptographie -- Calcul formel -- Optimisation}
+
+  \vfill
 
   \cveventt{Master 1 en Mathématiques}
   {Université de Bourgogne}
   {\smash{\parbox[t]{3em}{\centering
         2023
         \\[3pt]
-        \vrule height 27pt width 0.5pt}}}
+        \vrule height 36pt width 0.5pt}}}
   {Algèbre linéaire -- Théorie des corps -- Probabilités }
+
+  \vfill
 
   \cveventt{Licence en Mathématiques}
   {Université de Bourgogne}
@@ -205,10 +266,15 @@
         2022
         \\[3pt]
         \vrule height 11pt width 0.5pt \\[-1pt] 2019}}}
-  {Classé 5\textsuperscript{e} sur 55}
+  {Classé 5\textsuperscript{e}/55 (Top 10\,\%)}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \vfill
+
   \cvsection{Expérience}
+
+  \vfill
 
   \experiences{Stage de Recherche en Cryptographie}
   {Laboratoire du LIRMM -- Équipe ECO}{
@@ -222,38 +288,57 @@
 
   Développement d'algorithmes de réduction sous \kw{SageMath}. Analyse de complexité et comparaison des performances entre arithmétique polynomiale et entière.
 
-  {\small \faGithub \color{accent}  \href{https://enpeluche.github.io/lattice-reduction-internship/}{enpeluche.github.io/lattice-reduction-internship/}}
+  \vspace{0.1cm}
+
+  {\small \color{accent} \faGlobe  \href{https://enpeluche.github.io/lattice-reduction-internship/}{enpeluche.github.io/lattice-reduction-internship/}}
   }
 
-  \vspace{0.4cm}
+  \vfill
 
   \experiences{Professeur particulier}
   {Dijon, freelance}
   {2022}
-  {Mathématiques et physique niveau collège et lycée}
+  {\vspace{0.05cm}
+    Accompagnement pédagogique et remise à niveau en sciences (collège/lycée)}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \vfill
+
   \cvsection{Projets personnels}
 
+  \vfill
+
   \project{Optimisation de Tournées \& Planification (WSRP)}
-  {Conception d'un solveur hybride pour le routage de techniciens sous contraintes de compétences. Implémentation d'une \kw{heuristique} en \kw{Java} couplée à une programmation par contraintes (\kw{OR-Tools}).}
-  {enpeluche/wsrp-lns-solver}
+  {Conception d'un solveur hybride pour le routage de techniciens sous contraintes de compétences. Implémentation d'une \kw{heuristique} en \kw{Java} couplée à une
+
+    programmation par contraintes (\kw{OR-Tools}).}
+  {enpeluche/java-wsrp-solver}
+
+  \vfill
 
   \project{Coq-Verified Red-Black Tree}
-  {Formalisation et preuve mathématique des invariants d'équilibrage dans \kw{Coq}, avec extraction automatique vers un module \kw{OCaml} performant et certifié sans bug.}
+  {Formalisation et preuve mathématique des invariants d'équilibrage dans \kw{Coq}, avec extraction automatique vers un module \kw{OCaml} performant et sans bug.}
   {enpeluche/coq-verified-rbt}
+
+  \vfill
 
   \project{Architecture de Moteur de Résolution de Contraintes (CSP)}
   {Développement \textit{from scratch} en \kw{C++} d'un moteur de propagation. Implémentation des algorithmes d'Arc-Consistance (\kw{AC-3}).}
   {enpeluche/constraint-puzzle-solver}
 
+  \vfill
+
   \project{Protocole Cryptographique ZKP (Zero-Knowledge Proof)}
   {Implémentation du protocole d'authentification de \kw{Schnorr sur courbes elliptiques}. Prototypage algébrique sous \kw{SageMath} et développement d'une version performante en \kw{C++}.}
-  {enpeluche/zkp-schnorr-cpp}
+  {enpeluche/zero-knowledge-auth}
+
+  \newpage
 
   \project{Messagerie Post-Quantique (Réseaux Euclidiens)}
-  {Implémentation d'un chat chiffré résistant aux ordinateurs quantiques. Développement \kw{C++} d'un protocole d'échange de clés basé sur le problème \kw{LWE (Learning With Errors)} et les réseaux euclidiens. Architecture Client/Serveur asynchrone.}
-  {https://github.com/enpeluche/}
+  {Implémentation d'un chat chiffré résistant aux ordinateurs quantiques.
+
+    Développement \kw{C++} d'un protocole d'échange de clés basé sur le problème \kw{LWE (Learning With Errors)} et les réseaux euclidiens. Architecture Client/Serveur asynchrone.}
+  {enpeluche/lattice-based-messaging}
 
 \end{paracol}
 
