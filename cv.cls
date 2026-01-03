@@ -300,7 +300,7 @@
 
 \newcommand{\cveventt}[4]{%
   \noindent
-  \begin{tabular*}{\linewidth}{@{}p{0.13\linewidth}@{}p{0.88\linewidth}}
+  \begin{tabular*}{\linewidth}{@{}p{0.14\linewidth}@{}p{0.86\linewidth}}
     
     % Ligne 1 : Date + Titre
     \textcolor{body}{\footnotesize \cvDateMarker~#3} & 
@@ -325,7 +325,7 @@
 
 \newcommand{\experiences}[4]{%
   \noindent
-  \begin{tabular*}{\linewidth}{@{}p{0.16\linewidth}@{}p{0.85\linewidth}}
+  \begin{tabular*}{\linewidth}{@{}p{0.16\linewidth}@{}p{0.84\linewidth}}
     \textcolor{body}{\footnotesize \cvDateMarker~#3} & {\large\textcolor{emphasis}{\MakeUppercase{\textbf{#1}}}} \\
     & \textcolor{accent}{\footnotesize \cvLocationMarker~#2} \\
   \end{tabular*}
