@@ -181,6 +181,9 @@
 \newcommand{\tagline}[1]{\def\@tagline{ \LARGE #1}}
 \newcommand{\personalinfo}[1]{\def\@personalinfo{#1}}
 
+% create info fiels
+% ----------------------------------------------------
+
 \NewInfoField{email}{\faAt}[mailto:]
 \NewInfoField{permis}{\faCar}
 \NewInfoField{mailaddress}{\faEnvelope}
@@ -189,7 +192,6 @@
 \NewInfoField{xtwitter}{\raisebox{-0.2ex}{\scalebox{0.95}{\simpleicon{x}}}\,}[https://x.com/]
 \NewInfoField{linkedin}{\faLinkedin}[https://linkedin.com/in/]
 \NewInfoField{github}{\faGithub}[https://github.com/]
-% v1.?? Use fontawesome5 for Orcid symbol
 \NewInfoField{orcid}{\faOrcid}[https://orcid.org/]
 \NewInfoField{location}{\cvLocationMarker}
 
@@ -240,7 +242,9 @@
 \newcommand{\cvsectionfont}{\Large\bfseries}
 \newcommand{\cvsubsectionfont}{\large\bfseries}
 
-% L
+% Command to make a header which contains a tagline
+% -------------------------------------------------------
+
 \newcommand{\makecvheaderleft}{%
   \begingroup
     \altacv@left@photos\hfill%
@@ -250,12 +254,13 @@
     
     \medskip
     {\centering\taglinefont\color{tagline}\MakeUppercase{\@tagline}\par}
-    %{\color{tagline}\rule{\linewidth}{0.5pt}\par}
     \medskip
-    %{\personalinfofont\@personalinfo\par}
     \end{minipage}\hfill%
   \endgroup\medskip
 }
+
+% Command to make a header which contains a name and personals info
+% -------------------------------------------------------
 
 \newcommand{\makecvheaderright}{%
   \begingroup    
@@ -284,16 +289,19 @@
   {\color{subheading}\cvsubsectionfont{#1}\par}\medskip
 }
 
-% v1.1.4: fixes inconsistent font size
-% v1.7: adds accsupp ActualText for location and date markers
-%
+% define a command to render an educational experience entry
+% --------------------------------------------------------
+% Arguments :
+% #1: education title
+% #2: education location
+% #3: education date range
+% #4: education description
+% --------------------------------------------------------
+
 \newcommand{\cveventt}[4]{%
   \noindent
-  \begin{tabular*}{\linewidth}
-  {
-    @{}p{0.13\linewidth}
-    @{}p{0.88\linewidth}
-  }
+  \begin{tabular*}{\linewidth}{@{}p{0.13\linewidth}@{}p{0.88\linewidth}}
+    
     % Ligne 1 : Date + Titre
     \textcolor{body}{\footnotesize \cvDateMarker~#3} & 
     {\large\textcolor{emphasis}{\MakeUppercase{\textbf{#1}}}} \\
@@ -306,30 +314,36 @@
   \end{tabular*}
 }
 
-
+% define a command to render a work experience entry
+% --------------------------------------------------------
+% Arguments :
+% #1: experience title
+% #2: experience location
+% #3: experience date range
+% #4: experience description
+% --------------------------------------------------------
 
 \newcommand{\experiences}[4]{%
   \noindent
-  \begin{tabular*}{\linewidth}
-  {
-    @{}p{0.16\linewidth}
-    @{}p{0.85\linewidth}
-  }
-    % Ligne 1 : Date + Titre
-    \textcolor{body}{\footnotesize \cvDateMarker~#3} & 
-    {\large\textcolor{emphasis}{\MakeUppercase{\textbf{#1}}}} \\
-    
-    % Ligne 2 : Vide + Lieu
+  \begin{tabular*}{\linewidth}{@{}p{0.16\linewidth}@{}p{0.85\linewidth}}
+    \textcolor{body}{\footnotesize \cvDateMarker~#3} & {\large\textcolor{emphasis}{\MakeUppercase{\textbf{#1}}}} \\
     & \textcolor{accent}{\footnotesize \cvLocationMarker~#2} \\
   \end{tabular*}
-  {\small #4} 
+  {\small #4}
 }
 
+% define a command to render a work project entry
+% --------------------------------------------------------
+% Arguments :
+% #1: project title
+% #2: project description
+% #3: project github link
+% --------------------------------------------------------
 
-\newcommand{\project}[4]{%
-    {\large\color{emphasis}\textbf{#1}\par} % le titre
+\newcommand{\project}[3]{%
+    {\large\color{emphasis}\textbf{#1}\par}
     \smallskip\normalsize
-    \ifstrequal{#2}{}{}{{\small #2}\par\smallskip} % la description
+    \ifstrequal{#2}{}{}{{\small #2}\par\smallskip}
     \ifstrequal{#3}{}{}{\small \faGithub { \small \color{accent}\href{https://github.com/#3}{#3}}\par\smallskip} % le lien github 
     \par
     \medskip\normalsize
