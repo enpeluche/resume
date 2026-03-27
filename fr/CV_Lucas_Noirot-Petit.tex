@@ -5,61 +5,51 @@
 \geometry{left=1cm,right=1cm,top=1cm,bottom=1cm,columnsep=1cm}
 
 \usepackage{paracol}
+\usepackage[french]{babel}
+%\usepackage[none]{hyphenat}
 
-\usepackage[none]{hyphenat}
+\usepackage{accsupp}
 
-\usepackage{accsupp} % Paquet pour gérer le copier-coller
-
-% Patch pour le téléphone
 \renewcommand*{\phonesymbol}{%
-    \BeginAccSupp{method=escape,ActualText={Tel: }}%
-    \faPhone% ou le symbole par défaut de ton thème
+    \BeginAccSupp{method=escape,ActualText={Tel: }}
+    \faPhone
     \EndAccSupp{}~%
 }
 
-% Patch pour l'email
 \renewcommand*{\emailsymbol}{%
-    \BeginAccSupp{method=escape,ActualText={Email: }}%
-    \faEnvelope%
-    \EndAccSupp{}~%
+    \BeginAccSupp{method=escape,ActualText={Email: }}
+    \faEnvelope
+    \EndAccSupp{}~
 }
 
-% Patch pour LinkedIn (si tu utilises une commande custom)
 \renewcommand*{\linkedinsymbol}{%
-    \BeginAccSupp{method=escape,ActualText={LinkedIn: }}%
-    \faLinkedin%
-    \EndAccSupp{}~%
+    \BeginAccSupp{method=escape,ActualText={LinkedIn: }}
+    \faLinkedin
+    \EndAccSupp{}~
 }
 
-% Patch pour GitHub
-\renewcommand*{\githubsymbol}{%
-    \BeginAccSupp{method=escape,ActualText={GitHub: }}%
-    \faGithub%
-    \EndAccSupp{}~%
+\renewcommand*{\githubsymbol}{
+    \BeginAccSupp{method=escape,ActualText={GitHub: }}
+    \faGithub
+    \EndAccSupp{}~
 }
 
-
-% Patch pour le site web
 \renewcommand*{\homepagesymbol}{%
-    \BeginAccSupp{method=escape,ActualText={Site Web: }}%
-    \faGlobe% (Vérifie que c'est bien l'icône que tu veux)
-    \EndAccSupp{}~%
+    \BeginAccSupp{method=escape,ActualText={Site Web: }}
+    \faGlobe
+    \EndAccSupp{}~
 }
 
-% Patch pour la localisation/adresse
 \renewcommand*{\locationsymbol}{%
-    \BeginAccSupp{method=escape,ActualText={Lieu: }}%
-    \faMapMarker%
-    \EndAccSupp{}~%
+    \BeginAccSupp{method=escape,ActualText={Lieu: }}
+    \faMapMarker
+    \EndAccSupp{}~
 }
 
-% Patch pour le permis
-% Note : Si tu as défini \permissymbol toi-même, assure-toi d'utiliser
-% \renewcommand. Si c'est une nouvelle commande, utilise \newcommand.
-\renewcommand*{\permissymbol}{%
-    \BeginAccSupp{method=escape,ActualText={Divers: }}%
-    \faCar%
-    \EndAccSupp{}~%
+\renewcommand*{\permissymbol}{
+    \BeginAccSupp{method=escape,ActualText={Divers: }}
+    \faCar
+    \EndAccSupp{}~
 }
 
 
@@ -94,75 +84,61 @@
 \colorlet{emphasis}{SlateGrey}
 \colorlet{body}{LightGrey}
 
-% Change some fonts, if necessary
 \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
 \renewcommand{\personalinfofont}{\footnotesize}
 \renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
 \renewcommand{\cvsubsectionfont}{\large\bfseries}
 
-% Ajoute ça avant \begin{document}
 \newcommand{\kw}[1]{\textbf{\color{name}#1}}
 
-% Change the bullets for itemize and rating marker
-% for \cvskill if you want to
 \renewcommand{\cvItemMarker}{{\small\textbullet}}
 \renewcommand{\cvRatingMarker}{\faCircle}
-% ...and the markers for the date/location for \cvevent
-% \renewcommand{\cvDateMarker}{\faCalendar*[regular]}
-% \renewcommand{\cvLocationMarker}{\faMapMarker*}
 
 \begin{document}
 \name{Lucas Noirot \\[-10pt] (Petit)}
 
 \tagline{Ingénieur R\&D en Algorithmique \& Mathématiques Appliquées}
-%% You can add multiple photos on the left or right
-\photoR{4cm}{../images/P1034037.png}
-%\photoL{2.8cm}{hovercode}
 
 \personalinfo{%
   \phone{(+33) 6 85 26 36 67}~\hspace{-10pt}\email{lucas.noirot-petit@proton.me}
 
-  \vspace{0.25cm}
+  \vfill
 
   \linkedin{enpeluche}~\hspace{-10pt}\github{enpeluche}~\hspace{-10pt}\homepage{enpeluche.github.io}
 
-  \vspace{0.25cm}
+  \vfill
 
   \location{Montpellier, France} \hfill
   \permis{Permis B}
 }
 
 
-\columnratio{0.38}
+\columnratio{0.37}
 
 \begin{paracol}{2}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \makecvheaderright
 
   \cvsection{À propos de moi}
 
-  \vfill
-
   \begin{quote}
-    Passionné par l'informatique et les
-
-    mathématiques, je trouve mon équilibre dans l'abstraction, où
-    les idées prennent forme et deviennent concrètes.
+    Intéressé par la conception d’algorithmes efficaces pour des problèmes
+    complexes (optimisation combinatoire, cryptographie, calcul formel).
+    Je développe des solutions allant de la modélisation mathématique
+    à l’implémentation performante.
   \end{quote}
 
   \vfill
 
   \cvsubsection{Qualités personnelles}
   \cvtag{Rigoureux} \hfill
-  \cvtag{Abstraction} \hfill
-  \cvtag{Autodidacte}\\
-
-  \cvtag{Pro-actif} \hfill
   \cvtag{Esprit d'équipe} \hfill
+  \cvtag{Autodidacte}
+  \cvtag{Pro-actif} \hfill
+  \cvtag{Abstraction} \hfill
   \cvtag{Créatif}
 
-  \vfill
+  \vfill %--------------------------------------------------------------------------------------------------
 
   \cvsubsection{Centres d'intérêt}
   \cvtag{Origami}\hfill
@@ -173,21 +149,30 @@
 
   \cvsection{Compétence}
 
-  \vfill
 
   \cvsubsection{Sûreté \& Cryptographie}
   \cvtag{Méthodes formelles (Coq)}
   \cvtag{Preuve de sécurité}
 
-  \vfill
+  \vfill %--------------------------------------------------------------------------------------------------
 
-  \cvsubsection{Optimisation \& Modélisation}
-  \cvtag{PLNE (MIP)}
+
+  \cvsubsection{Recherche Opérationnelle}
+  \cvtag{MIP (OR-Tools)} \cvtag{Heuristiques}
+
   \cvtag{Programmation par contraintes}
-  \cvtag{Heuristiques}\hfill
-  \cvtag{Analyse de complexité}
 
-  \vfill
+  \cvtag{Optimisation combinatoire}
+
+  \vfill %--------------------------------------------------------------------------------------------------
+
+  \cvsubsection{Algorithmique}
+  \cvtag{Analyse de complexité}
+  \cvtag{Structures de graphes}
+  \cvtag{Algorithmes de graphes}
+  \cvtag{Flots / graphes}
+
+  \vfill %--------------------------------------------------------------------------------------------------
 
   \cvsubsection{Développement}
   \cvtag{C/C++} \hfill
@@ -201,54 +186,41 @@
   \vfill
 
   \cvsubsection{Outils \& Environnement}
-  \cvtag{ Linux} \hfill
-  \cvtag{ Git} \hfill
-  \cvtag{ Docker} \hfill
+  \cvtag{Linux} \hfill
+  \cvtag{Git} \hfill
+  \cvtag{Docker} \hfill
   \cvtag{\LaTeX}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \vfill
 
   \cvsection{Langue}
 
-  \vfill
+
 
   \begin{itemize}[label=\textcolor{accent}{\tiny\faCircle}]
     \item \textbf{Français} (Natif)
     \item \textbf{Anglais} (C1 -- Technique)
   \end{itemize}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \switchcolumn
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
   \makecvheaderleft
-
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \vspace{-0.3cm}
   \cvsection{Formation}
 
-  \vfill
+  \vspace{0.3cm}
 
   \cveventt{Master en Informatique - Algorithmique}
   {Université de Montpellier}
   {\smash{\parbox[t]{3em}{\centering
         2025
         \\[3pt]
-        \vrule height 36pt width 0.5pt}}}
-  {Complexité -- Cryptographie -- Calcul formel -- Optimisation}
+        \vrule height 46pt width 0.5pt}}}
+  {Complexité -- Cryptographie -- Calcul formel -- Optimisation -- Théorie des graphes avancée}
 
-  \vfill
+  \vspace{0.3cm} %--------------------------------------------------------------------------------------------------
 
   \cveventt{Master 1 en Mathématiques}
   {Université de Bourgogne}
@@ -258,7 +230,7 @@
         \vrule height 36pt width 0.5pt}}}
   {Algèbre linéaire -- Théorie des corps -- Probabilités }
 
-  \vfill
+  \vspace{0.3cm} %--------------------------------------------------------------------------------------------------
 
   \cveventt{Licence en Mathématiques}
   {Université de Bourgogne}
@@ -268,13 +240,12 @@
         \vrule height 11pt width 0.5pt \\[-1pt] 2019}}}
   {Classé 5\textsuperscript{e}/55 (Top 10\,\%)}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \vfill
+  \vspace{0.3cm}
 
   \cvsection{Expérience}
 
-  \vfill
+  \vspace{0.3cm}
 
   \experiences{Stage de Recherche en Cryptographie}
   {Laboratoire du LIRMM -- Équipe ECO}{
@@ -283,17 +254,18 @@
   \\[3pt]
   {\scriptsize\itshape (5 mois)}}}}
   {\vspace{0.05cm}
+  Exploration des liens entre réduction de réseaux \kw{polynomiaux} et \kw{euclidiens},
+  dans le contexte de la \kw{cryptographie post-quantique} (résistance aux attaques quantiques).
 
-  Réduction de réseaux : Adaptations d’idées provenant du cas polynomial.
-
-  Développement d'algorithmes de réduction sous \kw{SageMath}. Analyse de complexité et comparaison des performances entre arithmétique polynomiale et entière.
+  Adaptation d'idées algorithmiques du cas polynomial vers le cas entier (algorithme \kw{LLL}).
+  Prototypage sous \kw{SageMath}, analyse de complexité et stabilité numérique.
+  Présentation technique d'1h30 en anglais (\textit{Lattice Club}).
 
   \vspace{0.1cm}
-
-  {\small \color{accent} \faGlobe  \href{https://enpeluche.github.io/lattice-reduction-internship/}{enpeluche.github.io/lattice-reduction-internship/}}
+  {\small \color{accent} \faGlobe \href{https://enpeluche.github.io/lattice-reduction-internship/}{enpeluche.github.io/lattice-reduction-internship/}}
   }
-
-  \vfill
+  \vspace{0.3cm}
+  %--------------------------------------------------------------------------------------------------
 
   \experiences{Professeur particulier}
   {Dijon, freelance}
@@ -301,50 +273,46 @@
   {\vspace{0.05cm}
     Accompagnement pédagogique et remise à niveau en sciences (collège/lycée)}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \vfill
 
-  \cvsection{Projets personnels}
+  \vspace{0.3cm}
 
-  \vfill
+  \cvsection{Projets sélectionnés}
 
-  \project{Moteur 3D de Ray Tracing pour Surfaces Implicites}
-  {Développement \kw{from scratch} d'un moteur de rendu gérant les intersections de rayons avec des surfaces algébriques (tores, surfaces de Steiner). Implémentation d'un solveur symbolique polynomial optimisé via l'algorithme de \kw{Casteljau} et la base de \kw{Bernstein}. Intégration de \kw{CSG} (opérations booléennes) et d'optimisations spatiales par \kw{AABB} en \kw{Python} (portage \kw{Rust} à l'étude).}
+  \vspace*{\fill} %--------------------------------------------------------------------------------------------------
+
+  \project{Moteur de Ray Tracing pour Surfaces Algébriques Implicites}
+  {Moteur de rendu \kw{from scratch} basé sur la résolution exacte de $f(O+tD)=0$.
+    Isolement de racines en base de \kw{Bernstein} (algorithme de \kw{De Casteljau}),
+    opérations booléennes \kw{CSG} exactes, optimisation par hiérarchies \kw{AABB} et \kw{SIMD}.
+    Tests unitaires et benchmarks (\kw{Criterion}). \kw{Python} $\to$ portage \kw{Rust} en cours.}
   {enpeluche/bernstein-raytracer}
 
-  \vfill
 
-  \project{Optimisation de Tournées \& Planification (WSRP)}
-  {Conception d'un solveur hybride pour le routage de techniciens sous contraintes de compétences. Implémentation d'une \kw{heuristique} en \kw{Java} couplée à une
+  \vspace*{\fill} %--------------------------------------------------------------------------------------------------
 
-    programmation par contraintes (\kw{OR-Tools}).}
-  {enpeluche/java-wsrp-solver}
-
-  \vfill
-
-  \project{Coq-Verified Red-Black Tree}
-  {Formalisation et preuve mathématique des invariants d'équilibrage dans \kw{Coq}, avec extraction automatique vers un module \kw{OCaml} performant et sans bug.}
-  {enpeluche/coq-verified-rbt}
-
-  \vfill
-
-  \project{Architecture de Moteur de Résolution de Contraintes (CSP)}
-  {Développement \textit{from scratch} en \kw{C++} d'un moteur de propagation. Implémentation des algorithmes d'Arc-Consistance (\kw{AC-3}).}
-  {enpeluche/constraint-puzzle-solver}
-
-  \vfill
-
-  \project{Protocole Cryptographique ZKP (Zero-Knowledge Proof)}
-  {Implémentation du protocole d'authentification de \kw{Schnorr sur courbes elliptiques}. Prototypage algébrique sous \kw{SageMath} et développement d'une version performante en \kw{C++}.}
-  {enpeluche/zero-knowledge-auth}
-
-  \newpage
-
-  \project{Messagerie Post-Quantique (Réseaux Euclidiens)}
-  {Implémentation d'un chat chiffré résistant aux ordinateurs quantiques.
-
-    Développement \kw{C++} d'un protocole d'échange de clés basé sur le problème \kw{LWE (Learning With Errors)} et les réseaux euclidiens. Architecture Client/Serveur asynchrone.}
+  \project{Lattice-Chat -- Messagerie Post-Quantique \& Cryptanalyse}
+  {Chat chiffré de bout en bout dont la sécurité repose sur LWE.
+    Échange de clés post-quantique via \kw{LWE} (Learning With Errors),
+    chiffrement symétrique par \kw{ChaCha20}, réseau asynchrone (\kw{Tokio}).
+    Simulation d'attaques par réduction \kw{LLL} et benchmarks (dimension, bruit, module).
+    Implémentation en \kw{Rust}.}
   {enpeluche/lattice-based-messaging}
+
+
+  \vspace*{\fill} %--------------------------------------------------------------------------------------------------
+
+  \project{Solveur hybride pour le WSRP (Workforce Routing \& Scheduling)}
+  {Modélisation d’un problème de planification de techniciens sous contraintes de
+    fenêtres temporelles, compétences et déplacements (proche VRP).
+
+    Formulation en \kw{programmation linéaire en nombres entiers (MIP)} :
+    variables de flot $x_{k,i,j}$, contraintes de précédence et de fenêtres temporelles.
+
+    Résolution via \kw{OR-Tools (SCIP)}, accélérée par une \kw{heuristique gloutonne}
+    (due dates + insertion) utilisée en \kw{warm start}.
+
+    Optimisation multi-critères : temps travaillé, distance et retard.}
+  {enpeluche/java-wsrp-solver}
 
 \end{paracol}
 

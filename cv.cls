@@ -28,7 +28,7 @@
 \RequirePackage{scrlfile}
 \RequirePackage{xparse}
 \RequirePackage{hyperref}
-\RequirePackage[none]{hyphenat}
+%\RequirePackage[none]{hyphenat}
 
 
 \newif\ifxetexorluatex
